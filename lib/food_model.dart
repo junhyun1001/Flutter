@@ -1,27 +1,3 @@
-import 'dart:convert';
-import 'package:http/http.dart' as http;
-
-// Future 클래스는 미래에 사용될 데이터를 비동기 처리하여 보관함
-// await 키워드를 사용한 함수는 무조건 async 함수이어야 한다.
-// async 함수는 무조건 Future를 반환해야 한다.
-Future<Food> fetchFood() async {
-  final response = await http.get(Uri.parse(url));
-
-  if (response.statusCode == 200) {
-    // If the server did return a 200 OK response,
-    // then parse the JSON.
-    return Food.fromJson(jsonDecode(response.body));
-  } else {
-    // If the server did not return a 200 OK response,
-    // then throw an exception.
-    throw Exception('Failed to load FoodData');
-  }
-}
-
-var foodName = "닭가슴살";
-var url =
-    'http://openapi.foodsafetykorea.go.kr/api/5e61f5af77c04c20923a/I2790/json/1/10/DESC_KOR=된장찌개';
-
 class Food {
   I2790? i2790;
 
